@@ -15,7 +15,6 @@
 
 /// Dart implementation of the gRPC helloworld.Greeter server.
 import 'dart:io';
-
 import 'package:grpc/grpc.dart';
 import 'package:helloworld/src/generated/helloworld.pbgrpc.dart';
 
@@ -27,8 +26,7 @@ class GreeterService extends GreeterServiceBase {
 }
 
 Future<void> main(List<String> args) async {
-  final udsAddress =
-      InternetAddress('localhost', type: InternetAddressType.unix);
+  final udsAddress = InternetAddress('localhost', type: InternetAddressType.unix);
   final server = Server.create(services: [GreeterService()]);
   await server.serve(address: udsAddress);
   print('Start UNIX Server @localhost...');
